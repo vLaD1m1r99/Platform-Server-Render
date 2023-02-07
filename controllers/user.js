@@ -1,7 +1,14 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
-
+export const getUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.status(200).json(courses);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
 export const signIn = async (req, res) => {
   const { email, password } = req.body;
   try {
