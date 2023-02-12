@@ -15,6 +15,7 @@ app.use('/user', userRoutes);
 app.use('/courses', courseRoutes);
 
 const PORT = process.env.PORT || 5000;
+mongoose.set('strictQuery', true);
 mongoose
   .connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
@@ -24,5 +25,3 @@ mongoose
     app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
   )
   .catch((error) => console.log(error.message));
-//This is for warrnings
-// mongoose.set('useFindAndModify', false);
